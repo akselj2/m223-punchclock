@@ -4,9 +4,12 @@ import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "Entry")
 public class Entry {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,11 @@ public class Entry {
 
   @Column(nullable = false)
   private LocalDateTime checkOut;
+
+  @ManyToOne
+  @JoinColumn(name = "category_id", nullable = false)
+  @JsonIgnoreProperties("category")
+  private Category category;
 
   public Long getId() {
     return id;
