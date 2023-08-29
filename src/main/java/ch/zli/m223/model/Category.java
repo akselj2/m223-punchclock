@@ -19,6 +19,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     @Column(nullable = false)
+    @JsonIgnoreProperties("category")
     private Set<Entry> entries;
 
     @Column(nullable = false)
@@ -39,4 +40,8 @@ public class Category {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    
+
+
 }

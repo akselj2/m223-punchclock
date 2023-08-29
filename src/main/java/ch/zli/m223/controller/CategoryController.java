@@ -58,7 +58,7 @@ public class CategoryController {
     @PUT
     @Path("/edit/{id}")
     @Operation(summary = "Updates a Category.", description = "Updates an existing Category.")
-    public Category ediCategory(Long id, Category category) {
+    public Category editCategory(Long id, Category category) {
         return categoryService.editCategory(id, category);
     }
 }
