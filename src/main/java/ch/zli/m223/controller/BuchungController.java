@@ -1,0 +1,107 @@
+package ch.zli.m223.controller;
+
+import java.util.List;
+
+import javax.annotation.security.RolesAllowed;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import java.lang.Long;
+import java.time.LocalDateTime;
+
+import ch.zli.m223.model.Buchung;
+import ch.zli.m223.service.BuchungService;
+
+@Path("/buchungen")
+@RequestScoped
+@Tag(name = "Buchungen", description = "Handling of bookings")
+public class BuchungController {
+
+    /**
+     * TODO: Finish adjustments to make sure it's runable. MAINLY: refactor name changes from entry to Buchung. 
+     * TODO: Delete and add files needed as per Anforderung List.
+     * TODO: Include JWT in most files, don't forget visitor role.
+     * TODO: AuthService !!!
+     * Note: Shouldn't require too much work, i estimate about 1-2hours. 
+     */
+
+    @Inject
+    BuchungService buchungService;
+
+    @Inject
+    JsonWebToken jwt;
+
+    @GET
+    @RolesAllowed({"Admin", "Member"})
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Index all Entries.", description = "Returns a list of all entries.")
+    public List<Buchung> index() throws Exception {
+        try {
+            var userId = jwt.getName();
+            var groups = jwt.getGroups();
+            if (groups.iterator().next().equals("Admin")) {
+                return buchungService.findAll();
+            } else {
+                return null; //TODO: add find by user Id.
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GET
+    @RolesAllowed({"Admin"})
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Finds booking by id", description = "Search for a specific booking by it's id")
+    public Buchung getBuchungById(Long id) {
+        return buchungService.findById(id);
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
+    public Buchung create(Buchung entry) {
+        /*LocalDateTime checkIn = entry.getCheckIn();
+        LocalDateTime checkOut = entry.getCheckOut();
+
+        if(null.compareTo(null) < 0) {
+            System.out.println("it was correct :))))");
+            return entryService.createEntry(entry);
+        } else {
+            System.out.println("you tried, line 49 entry controller");
+            return null;
+        }*/
+        return null;
+    }
+
+
+    @DELETE
+    @Path("/{id}")
+    @RolesAllowed({"Admin", "Member"})
+    @Operation(summary = "Deletes an entry.", description = "Deletes a previously created entry from the database.")
+    public void delete(Long id) {
+        //entryService.deleteEntry(id);
+    }
+
+    @PUT
+    @Path("/edit/{id}")
+    @RolesAllowed({"Admin", "Member"})
+    @Operation(summary = "Updates an entry.", description = "Updates an existing entry in the database.")
+    public Buchung editEntry(Long id, Buchung entry) {
+        return buchungService.editEntry(id, entry);
+    }
+
+}
