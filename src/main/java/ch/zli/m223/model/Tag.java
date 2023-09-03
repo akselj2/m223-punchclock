@@ -37,7 +37,7 @@ public class Tag {
         inverseJoinColumns = { @JoinColumn(name="entry_id")}
     )
     @JsonIgnoreProperties("entries")
-    private Set<Entry> entries;
+    private Set<Buchung> entries;
 
     public Long getId() {
         return id;
@@ -55,11 +55,11 @@ public class Tag {
         this.tagName = tagName;
     }
 
-    public Set<Entry> getEntries() {
+    public Set<Buchung> getEntries() {
         return entries;
     }
 
-    public void setEntries(Set<Entry> entries) {
+    public void setEntries(Set<Buchung> entries) {
         this.entries = entries;
     }
 }

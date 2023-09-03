@@ -20,7 +20,7 @@ public class Category {
     @OneToMany(mappedBy = "category")
     @Column(nullable = false)
     @JsonIgnoreProperties("category")
-    private Set<Entry> entries;
+    private Set<Buchung> entries;
 
     @Column(nullable = false)
     private String title;

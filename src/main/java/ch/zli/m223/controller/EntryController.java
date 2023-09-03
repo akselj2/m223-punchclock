@@ -2,6 +2,8 @@ package ch.zli.m223.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -21,6 +23,7 @@ import ch.zli.m223.model.Entry;
 import ch.zli.m223.service.EntryService;
 
 @Path("/entries")
+@RequestScoped
 @Tag(name = "Entries", description = "Handling of entries")
 public class EntryController {
 
@@ -30,6 +33,7 @@ public class EntryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Entries.", description = "Returns a list of all entries.")
+    //@RolesAllowed({"User", "Admin"})
     public List<Entry> index() {
         return entryService.findAll();
     }
@@ -38,6 +42,7 @@ public class EntryController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
+    //@RolesAllowed({"User, Admin"})
     public Entry create(Entry entry) {
         LocalDateTime checkIn = entry.getCheckIn();
         LocalDateTime checkOut = entry.getCheckOut();
@@ -55,6 +60,7 @@ public class EntryController {
     @DELETE
     @Path("/{id}")
     @Operation(summary = "Deletes an entry.", description = "Deletes a previously created entry from the database.")
+    @RolesAllowed({"User, Admin"})
     public void delete(Long id) {
         entryService.deleteEntry(id);
     }
@@ -62,6 +68,7 @@ public class EntryController {
     @PUT
     @Path("/edit/{id}")
     @Operation(summary = "Updates an entry.", description = "Updates an existing entry in the database.")
+    @RolesAllowed({"User", "Admin"})
     public Entry editEntry(Long id, Entry entry) {
         return entryService.editEntry(id, entry);
     }
