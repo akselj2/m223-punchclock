@@ -3,14 +3,8 @@ package ch.zli.m223.model;
 import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Table(name = "Entry")
@@ -32,10 +26,11 @@ public class Buchung {
   @Column(nullable = false)
   private boolean halfDay;
 
-  /*@ManyToOne
-  @JoinColumn(name = "category_id", nullable = false)
-  @JsonIgnoreProperties("category")
-  private Category category;*/
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", nullable = false)
+  private UserEntity user;
+
+  /** GETTERS AND SETTERS  **/
 
   public Long getId() {
     return this.id;
@@ -76,4 +71,8 @@ public class Buchung {
   public void setHalfDay(boolean halfDay) {
     this.halfDay = halfDay;
   }
+
+public Buchung getUser() {
+    return null;
+}
 }

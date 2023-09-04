@@ -18,7 +18,6 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import java.lang.Long;
-import java.time.LocalDateTime;
 
 import ch.zli.m223.model.Buchung;
 import ch.zli.m223.service.BuchungService;
@@ -43,9 +42,9 @@ public class BuchungController {
     JsonWebToken jwt;
 
     @GET
-    @RolesAllowed({"Admin", "Member"})
+    //@RolesAllowed({"Admin", "Member"})
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Index all Entries.", description = "Returns a list of all entries.")
+    @Operation(summary = "Index all Bookings.", description = "Returns a list of all bookings.")
     public List<Buchung> index() throws Exception {
         try {
             var userId = jwt.getName();
@@ -53,7 +52,7 @@ public class BuchungController {
             if (groups.iterator().next().equals("Admin")) {
                 return buchungService.findAll();
             } else {
-                return null; //TODO: add find by user Id.
+                return buchungService.findAllByUser(userId);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,7 +61,8 @@ public class BuchungController {
     }
 
     @GET
-    @RolesAllowed({"Admin"})
+    @Path("/{id}")
+    //@RolesAllowed({"Admin"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Finds booking by id", description = "Search for a specific booking by it's id")
     public Buchung getBuchungById(Long id) {
@@ -74,23 +74,13 @@ public class BuchungController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
     public Buchung create(Buchung entry) {
-        /*LocalDateTime checkIn = entry.getCheckIn();
-        LocalDateTime checkOut = entry.getCheckOut();
-
-        if(null.compareTo(null) < 0) {
-            System.out.println("it was correct :))))");
-            return entryService.createEntry(entry);
-        } else {
-            System.out.println("you tried, line 49 entry controller");
-            return null;
-        }*/
-        return null;
+        return buchungService.createBuchung(entry);
     }
 
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({"Admin", "Member"})
+    //@RolesAllowed({"Admin", "Member"})
     @Operation(summary = "Deletes an entry.", description = "Deletes a previously created entry from the database.")
     public void delete(Long id) {
         //entryService.deleteEntry(id);
