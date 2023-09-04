@@ -30,17 +30,14 @@ public class UserService {
             throw e;
         }
     }
-    /**
-     * FILL IN WITH FOLLOWING DATA ON 04.08.23
-     * CREATE
-     * FIND BY VARIOUS METHODS
-     * DELETE
-     * EDIT
-     */
 
     public List<UserEntity> findAll() {
-        var query = entityManager.createQuery("FROM UserEntity", UserEntity.class);
-        return query.getResultList();
+        try {
+            var query = entityManager.createQuery("FROM UserEntity", UserEntity.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Transactional
