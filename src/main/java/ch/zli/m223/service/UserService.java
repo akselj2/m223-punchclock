@@ -41,29 +41,42 @@ public class UserService {
     }
 
     @Transactional
-    public UserEntity create(UserEntity user) {
-        entityManager.persist(user);
-        entityManager.flush();
-        entityManager.refresh(user);
-
-        return user;
+    public UserEntity create(UserEntity user) throws Exception{
+        try {
+            entityManager.persist(user);
+            entityManager.flush();
+            entityManager.refresh(user);
+    
+            return user;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Transactional
     public UserEntity update(Long id, UserEntity user) {
-        entityManager.merge(user);
-        return user;
+        try {
+            entityManager.merge(user);
+            return user;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Transactional
-    public void delete(long id) {
-        UserEntity user = entityManager.find(UserEntity.class, id);
-        var bookings = buchungService.findAllByUser(user.getId().toString());
-
-        for (Buchung booking : bookings) {
-            if (booking.getUser().getId() == user.getId()) {
-                entityManager.remove(user);
+    public void delete(long id) throws Exception {
+        try {
+            UserEntity user = entityManager.find(UserEntity.class, id);
+            var bookings = buchungService.findAllByUser(user.getId().toString());
+    
+            for (Buchung booking : bookings) {
+                if (booking.getUser().getId() == user.getId()) {
+                    entityManager.remove(user);
+                }
             }
+
+        } catch (Exception e) {
+            throw e;
         }
     }
 }
