@@ -13,6 +13,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -83,14 +84,18 @@ public class BuchungController {
     //@RolesAllowed({"Admin", "Member"})
     @Operation(summary = "Deletes an entry.", description = "Deletes a previously created entry from the database.")
     public void delete(Long id) {
-        //entryService.deleteEntry(id);
+        try {
+            buchungService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @PUT
     @Path("/edit/{id}")
     @RolesAllowed({"Admin", "Member"})
     @Operation(summary = "Updates an entry.", description = "Updates an existing entry in the database.")
-    public Buchung editEntry(Long id, Buchung entry) {
+    public Response editEntry(Long id, Buchung entry) {
         return buchungService.editEntry(id, entry);
     }
 

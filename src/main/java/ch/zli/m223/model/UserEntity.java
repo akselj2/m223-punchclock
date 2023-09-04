@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -30,8 +29,16 @@ public class UserEntity {
     @Column(nullable = false)
     private String jwt;
 
+    @Column(nullable = false)
+    private String role;
 
-    
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getJwt() {
         return this.jwt;
@@ -47,7 +54,7 @@ public class UserEntity {
 
     public void setUsername(String username) {
         this.username = username;
-    };
+    }
 
     public String getPassword() {
         return this.password;
@@ -55,7 +62,7 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    };
+    }
 
     public String getEmail() {
         return this.email;
@@ -63,7 +70,15 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    };
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return this.role;
+    }
 
 
 }

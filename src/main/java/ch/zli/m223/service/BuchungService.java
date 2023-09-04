@@ -7,6 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
@@ -57,18 +58,32 @@ public class BuchungService {
     }
 
     @Transactional
-    public void deleteEntry(Long id) {
-        Buchung entry = entityManager.find(Buchung.class, id);
-        if (entry != null) {
-            entityManager.remove(entry);
+    public void delete(Long id) {
+        Buchung booking = entityManager.find(Buchung.class, id);
+        if (booking.getUser().getId().toString().equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")) {
+            entityManager.remove(booking);
         } else {
             System.out.println("didn't work :(");
         }
     }
 
     @Transactional
-    public Buchung editEntry(Long id, Buchung entry) {
-        entry.setId(id);
-        return entityManager.merge(entry);
+    public Response editEntry(Long id, Buchung booking) {
+        try {
+            if (booking.getUser().getId().toString().equals(jwt.getName())
+                    || jwt.getGroups().iterator().next().equals("Admin")) {
+                entityManager.merge(booking);
+                return Response.ok(booking).build();
+            } else {
+                // Nicht eigene Buchung und oder Kein Admin zum bearbeiten
+                return Response.status(Response.Status.BAD_REQUEST).build();
+
+            }
+
+        } catch (Exception e) {
+            throw e;
+        }
     }
+
+    
 }
