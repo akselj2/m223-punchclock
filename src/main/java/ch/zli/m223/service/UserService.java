@@ -56,7 +56,7 @@ public class UserService {
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void delete(long id) {
         UserEntity user = entityManager.find(UserEntity.class, id);
         var bookings = buchungService.findAllByUser(user.getId().toString());
 

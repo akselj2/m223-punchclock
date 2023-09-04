@@ -6,6 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
@@ -63,4 +64,19 @@ public class UserController {
     public UserEntity create(UserEntity user) {
         return userService.create(user);
     }
+
+    @Path("{id}")
+    @DELETE
+    @RolesAllowed({"Admin"})
+    @Operation (summary = "löscht ", description = "deletes old User")
+    public Response delete(int id) {
+        String userId = id + "";
+        if(userId.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals(userId)) {
+            userService.delete(id);
+            return Response.ok("Deleted User").build();
+        }
+
+        return Response.ok("Not Valid User").build();
+
+    }                                                                                                                                                              
 }
