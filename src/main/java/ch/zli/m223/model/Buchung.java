@@ -32,10 +32,10 @@ public class Buchung {
   @Column(nullable = false)
   private boolean halfDay;
 
-  @ManyToOne
+  /*@ManyToOne
   @JoinColumn(name = "category_id", nullable = false)
   @JsonIgnoreProperties("category")
-  private Category category;
+  private Category category;*/
 
   public Long getId() {
     return this.id;
