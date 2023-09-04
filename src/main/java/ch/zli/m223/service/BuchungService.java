@@ -28,33 +28,53 @@ public class BuchungService {
      */
 
     @Transactional
-    public Buchung createBuchung(Buchung buchung) {
-        entityManager.persist(buchung);
-        return buchung;
-    }
-
-    public List<Buchung> findAll() {
-        var query = entityManager.createQuery("FROM Buchung", Buchung.class);
-        return query.getResultList();
-    }
-
-    public List<Buchung> findAllByUser(String id) {
-        List<Buchung> bookings = new ArrayList<>();
-        var query = entityManager.createQuery("FROM Buchung", Buchung.class);
-        for (Buchung booking : query.getResultList()) {
-            if (booking.getUser().getId().toString().equals(id)) {
-                bookings.add(booking);
-            } 
-
+    public Buchung createBuchung(Buchung buchung) throws Exception {
+        try {
+            entityManager.persist(buchung);
+            return buchung;
+        } catch (Exception e) {
+            throw e;
         }
-        return bookings;
+    }
+
+    public List<Buchung> findAll() throws Exception {
+        try {
+            var query = entityManager.createQuery("FROM Buchung", Buchung.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
+
+        
+    }
+
+    public List<Buchung> findAllByUser(String id) throws Exception {
+        try {
+            List<Buchung> bookings = new ArrayList<>();
+            var query = entityManager.createQuery("FROM Buchung", Buchung.class);
+            for (Buchung booking : query.getResultList()) {
+                if (booking.getUser().getId().toString().equals(id)) {
+                    bookings.add(booking);
+                } 
+
+            }
+            return bookings;
+        } catch (Exception e) {
+            throw e;
+        }
+        
 
     }
 
     @Transactional
-    public Buchung findById(Long id) {
-        var query = entityManager.find(Buchung.class, id);
-        return query;
+    public Buchung findById(Long id) throws Exception {
+        try {
+            var query = entityManager.find(Buchung.class, id);
+            return query;
+        } catch (Exception e) {
+            throw e;
+        }
+        
     }
 
     @Transactional
