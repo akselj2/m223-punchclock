@@ -6,6 +6,12 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import java.time.LocalDate;
 
+/**
+ * @author Aksel Jessen
+ * @date: 5.09.2023
+ * @classname: Buchung.java
+ */
+
 @Entity
 @Table(name = "Buchung")
 public class Buchung {

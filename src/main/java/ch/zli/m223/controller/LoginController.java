@@ -17,6 +17,12 @@ import ch.zli.m223.model.UserEntity;
 import ch.zli.m223.service.LoginService;
 import ch.zli.m223.service.UserService;
 
+/**
+ * @author Aksel Jessen
+ * @date: 5.09.2023
+ * @classname: LoginController.java
+ */
+
 @Path("/login")
 @Tag(name = "Login", description = "Loginpage")
 public class LoginController {

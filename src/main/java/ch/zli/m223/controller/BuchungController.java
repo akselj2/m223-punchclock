@@ -23,6 +23,12 @@ import java.lang.Long;
 import ch.zli.m223.model.Buchung;
 import ch.zli.m223.service.BuchungService;
 
+/**
+ * @author Aksel Jessen
+ * @date: 5.09.2023
+ * @classname: BuchungController.java
+ */
+
 @Path("/buchungen")
 @RequestScoped
 @Tag(name = "Buchungen", description = "Handling of bookings")
@@ -124,7 +130,7 @@ public class BuchungController {
     @Operation(summary = "Updates a booking.", description = "Updates an existing booking in the database.")
     public Response editEntry(Long id, Buchung booking) throws Exception {
         try {
-            return buchungService.editEntry(id, booking);
+            return buchungService.editBooking(id, booking);
         } catch (Exception e) {
             throw e;
         }

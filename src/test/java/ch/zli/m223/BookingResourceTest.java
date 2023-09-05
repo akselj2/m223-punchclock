@@ -9,6 +9,12 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import io.quarkus.test.junit.QuarkusTest;
 
+/**
+ * @author Aksel Jessen
+ * @date 5.09.2023
+ * @classname BookingResourceTest.java
+ */
+
 @QuarkusTest
 public class BookingResourceTest {
     @Test

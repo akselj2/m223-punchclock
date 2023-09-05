@@ -11,6 +11,12 @@ import ch.zli.m223.service.AuthenticationService;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
+
+/**
+ * @author Aksel Jessen
+ * @date 05.09.2023
+ * @classname UserResourceTest.java
+ */
 @QuarkusTest
 public class UserResourceTest {
 

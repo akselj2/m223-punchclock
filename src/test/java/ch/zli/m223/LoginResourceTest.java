@@ -10,6 +10,11 @@ import ch.zli.m223.model.Login;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 
+/**
+ * @author Aksel Jessen
+ * @date 5.09.2023
+ * @classname LoginResourceTest.java
+ */
 @QuarkusTest
 public class LoginResourceTest {
     @Test

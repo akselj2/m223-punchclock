@@ -15,6 +15,12 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import ch.zli.m223.model.UserEntity;
 import ch.zli.m223.service.UserService;
 
+/**
+ * @author Aksel Jessen
+ * @date: 5.09.2023
+ * @classname: UserController.java
+ */
+
 @Path("/user")
 @Tag(name = "UserController", description = "stuff")
 public class UserController {
@@ -68,8 +74,8 @@ public class UserController {
 
     /**
      * 
-     * @param user
-     * @return
+     * @param user object of the UserEntity class
+     * @return returns the newly created / registered user.
      * @throws Exception
      */
     @POST
@@ -85,10 +91,16 @@ public class UserController {
         }
     }
 
+    /**
+     * 
+     * @param id id of the requested user
+     * @return returns a response confirming the user has been deleted, unless it wasn't a valid user.
+     * @throws Exception
+     */
     @Path("/{id}")
     @DELETE
     @RolesAllowed({"Admin"})
-    @Operation (summary = "Deletes user ", description = "deletes users.")
+    @Operation (summary = "Deletes a specific user", description = "Deletes a user with it's respective id.")
     public Response delete(int id) throws Exception {
         try {
             String userId = id + "";
@@ -106,12 +118,18 @@ public class UserController {
 
     }           
     
+    /**
+     * 
+     * @param id id of the user to be updated / replaced.
+     * @param user requires the data of a user entity to replace the preexisting user.
+     * @return returns the updated users profile.
+     */
     @Path("/{id}")
     @PUT
     @RolesAllowed({"Admin"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Updates a Users profile", description = "As it says.")
+    @Operation(summary = "Updates a Users profile", description = "Updates and returns the recently updated profile of a specific user.")
     public UserEntity update(Long id, UserEntity user) {
         try {
             return userService.update(id, user);

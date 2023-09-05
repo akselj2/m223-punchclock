@@ -9,6 +9,12 @@ import javax.persistence.Table;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+/**
+ * @author Aksel Jessen
+ * @date: 5.09.2023
+ * @classname: UserEntity.java
+ */
+
 @Entity
 @Table(name="UserEntity")
 public class UserEntity {
@@ -32,7 +38,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String role;
 
-    /* GETTERS AND SETTERS */
+    /**** GETTERS AND SETTERS ****/
 
     public Long getId() {
         return this.id;
