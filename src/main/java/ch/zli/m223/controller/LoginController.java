@@ -36,11 +36,14 @@ public class LoginController {
         var token = "Unsuccessful login.";
 
         for (UserEntity user : query) {
-            String userEmail = user.getEmail();
+            token = "gamers, we're in.";
+            String userEmail = user.getUsername();
             String userPass = user.getPassword();
+            System.out.println("Username: " + userEmail + ", Password: " + userPass);
 
             if (userEmail.equals(login.getUsername()) && userPass.equals(login.getPassword())) {
                 token = loginService.login(user);
+                System.out.println(loginService.login(user));
             }
         }
 

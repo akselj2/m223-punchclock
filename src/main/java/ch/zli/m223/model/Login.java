@@ -1,11 +1,16 @@
 package ch.zli.m223.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Login {
+    @JsonProperty
     private String username;
+
+    @JsonProperty
     private String password;
 
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public void setUsername(String username) {
@@ -13,7 +18,7 @@ public class Login {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(String password) {

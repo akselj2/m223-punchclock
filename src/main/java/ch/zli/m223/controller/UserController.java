@@ -63,22 +63,32 @@ public class UserController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "creates a new user or registers a new user", description = " as mention in summary")
-    public UserEntity create(UserEntity user) {
-        return userService.create(user);
+    public UserEntity create(UserEntity user) throws Exception{
+        try {
+            return userService.create(user);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Path("{id}")
     @DELETE
     @RolesAllowed({"Admin"})
     @Operation (summary = "Deletes user ", description = "deletes users.")
-    public Response delete(int id) {
-        String userId = id + "";
-        if(userId.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals(userId)) {
-            userService.delete(id);
-            return Response.ok("Deleted User").build();
+    public Response delete(int id) throws Exception {
+        try {
+            String userId = id + "";
+            if(userId.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals(userId)) {
+                userService.delete(id);
+                return Response.ok("Deleted User").build();
+            }
+
+            return Response.ok("Not Valid User").build();
+        } catch (Exception e) {
+            throw e;
         }
 
-        return Response.ok("Not Valid User").build();
+        
 
     }           
     

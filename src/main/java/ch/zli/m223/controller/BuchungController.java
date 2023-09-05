@@ -29,8 +29,6 @@ import ch.zli.m223.service.BuchungService;
 public class BuchungController {
 
     /**
-     * TODO: Finish adjustments to make sure it's runable. MAINLY: refactor name changes from entry to Buchung. 
-     * TODO: Delete and add files needed as per Anforderung List.
      * TODO: Include JWT in most files, don't forget visitor role.
      * TODO: AuthService !!!
      * Note: Shouldn't require too much work, i estimate about 1-2hours. 
@@ -43,7 +41,7 @@ public class BuchungController {
     JsonWebToken jwt;
 
     @GET
-    //@RolesAllowed({"Admin", "Member"})
+    @RolesAllowed({"Admin", "Member"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Bookings.", description = "Returns a list of all bookings.")
     public List<Buchung> index() throws Exception {
@@ -63,25 +61,33 @@ public class BuchungController {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Finds booking by id", description = "Search for a specific booking by it's id")
-    public Buchung getBuchungById(Long id) {
-        return buchungService.findById(id);
+    public Buchung getBuchungById(Long id) throws Exception {
+        try {
+            return buchungService.findById(id);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
-    public Buchung create(Buchung entry) {
-        return buchungService.createBuchung(entry);
+    public Buchung create(Buchung entry) throws Exception {
+        try {
+            return buchungService.createBuchung(entry);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({"Admin", "Member"})
+    @RolesAllowed({"Admin", "Member"})
     @Operation(summary = "Deletes an entry.", description = "Deletes a previously created entry from the database.")
     public void delete(Long id) {
         try {
@@ -95,8 +101,12 @@ public class BuchungController {
     @Path("/edit/{id}")
     @RolesAllowed({"Admin", "Member"})
     @Operation(summary = "Updates an entry.", description = "Updates an existing entry in the database.")
-    public Response editEntry(Long id, Buchung entry) {
-        return buchungService.editEntry(id, entry);
+    public Response editEntry(Long id, Buchung entry) throws Exception {
+        try {
+            return buchungService.editEntry(id, entry);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
 }

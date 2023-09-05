@@ -7,7 +7,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Entry")
+@Table(name = "Buchung")
 public class Buchung {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Buchung {
   @Column(nullable = false)
   private boolean halfDay;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id", nullable = false)
   private UserEntity user;
 

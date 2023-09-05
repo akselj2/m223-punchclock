@@ -48,7 +48,7 @@ public class UserEntity {
         this.jwt = jwt;
     }
 
-    public Object getUsername() {
+    public String getUsername() {
         return this.username;
     }
 
