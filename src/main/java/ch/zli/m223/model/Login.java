@@ -9,6 +9,8 @@ public class Login {
     @JsonProperty
     private String password;
 
+    /**** GETTERS AND SETTERS ****/
+
     public String getUsername() {
         return username;
     }

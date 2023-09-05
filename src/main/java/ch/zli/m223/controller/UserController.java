@@ -1,15 +1,12 @@
 package ch.zli.m223.controller;
 
 import java.util.List;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.xml.catalog.Catalog;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-import javax.print.attribute.standard.Media;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -29,6 +26,11 @@ public class UserController {
     JsonWebToken jwt;
 
 
+    /**
+     * 
+     * @return calls userService.findAll() to retrieve all Users in the database
+     * @throws Exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users on this platform")
@@ -40,11 +42,17 @@ public class UserController {
         }
     }
 
+    /**
+     * 
+     * @param id user ID
+     * @return returns a server Response if it can find the user by it's id. or if they are an admin.
+     * @throws Exception 
+     */
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Show a user", description = "Returns a single users data using his ID")
-    public Response getUserById(Long id) {
+    public Response getUserById(Long id) throws Exception {
         try {
             String userId = id + "";
             if(userId.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")) {
@@ -58,6 +66,12 @@ public class UserController {
         }
     }
 
+    /**
+     * 
+     * @param user
+     * @return
+     * @throws Exception
+     */
     @POST
     @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
@@ -71,7 +85,7 @@ public class UserController {
         }
     }
 
-    @Path("{id}")
+    @Path("/{id}")
     @DELETE
     @RolesAllowed({"Admin"})
     @Operation (summary = "Deletes user ", description = "deletes users.")
@@ -92,7 +106,7 @@ public class UserController {
 
     }           
     
-    @Path("{id}")
+    @Path("/{id}")
     @PUT
     @RolesAllowed({"Admin"})
     @Produces(MediaType.APPLICATION_JSON)

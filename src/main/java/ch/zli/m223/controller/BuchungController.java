@@ -34,6 +34,11 @@ public class BuchungController {
     @Inject
     JsonWebToken jwt;
 
+    /**
+     * 
+     * @return returns either all bookings if you're an admin, and only those that you've booked if you're a member. otherwise, nothing gets returned.
+     * @throws Exception
+     */
     @GET
     @RolesAllowed({"Admin", "Member"})
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,6 +58,12 @@ public class BuchungController {
         return null;
     }
 
+    /**
+     * 
+     * @param id the id of a booking
+     * @return returns the booking that's requested.
+     * @throws Exception
+     */
     @GET
     @Path("/{id}")
     @RolesAllowed({"Admin"})
@@ -66,23 +77,32 @@ public class BuchungController {
         }
     }
 
+    /**
+     * 
+     * @param booking object of the booking entity
+     * @return returns the newly created booking
+     * @throws Exception
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
-    public Buchung create(Buchung entry) throws Exception {
+    @Operation(summary = "Creates a new booking.", description = "Creates a new booking and returns the newly added booking.")
+    public Buchung create(Buchung booking) throws Exception {
         try {
-            return buchungService.createBuchung(entry);
+            return buchungService.createBuchung(booking);
         } catch (Exception e) {
             throw e;
         }
     }
 
-
+    /**
+     * deletes the requested booking
+     * @param id id of the booking
+     */
     @DELETE
     @Path("/{id}")
     @RolesAllowed({"Admin", "Member"})
-    @Operation(summary = "Deletes an entry.", description = "Deletes a previously created entry from the database.")
+    @Operation(summary = "Deletes a booking.", description = "Deletes a previously created booking from the database.")
     public void delete(Long id) {
         try {
             buchungService.delete(id);
@@ -91,13 +111,20 @@ public class BuchungController {
         }
     }
 
+    /**
+     * 
+     * @param id id of the booking
+     * @param booking object of type booking with all of it's details
+     * @return returns updated booking
+     * @throws Exception
+     */
     @PUT
     @Path("/edit/{id}")
     @RolesAllowed({"Admin", "Member"})
-    @Operation(summary = "Updates an entry.", description = "Updates an existing entry in the database.")
-    public Response editEntry(Long id, Buchung entry) throws Exception {
+    @Operation(summary = "Updates a booking.", description = "Updates an existing booking in the database.")
+    public Response editEntry(Long id, Buchung booking) throws Exception {
         try {
-            return buchungService.editEntry(id, entry);
+            return buchungService.editEntry(id, booking);
         } catch (Exception e) {
             throw e;
         }

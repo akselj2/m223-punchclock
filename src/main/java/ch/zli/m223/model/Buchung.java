@@ -30,7 +30,7 @@ public class Buchung {
   @JoinColumn(name = "user_id", nullable = false)
   private UserEntity user;
 
-  /** GETTERS AND SETTERS  **/
+  /**** GETTERS AND SETTERS  ****/
 
   public Long getId() {
     return this.id;

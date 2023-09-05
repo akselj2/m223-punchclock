@@ -32,6 +32,8 @@ public class UserEntity {
     @Column(nullable = false)
     private String role;
 
+    /* GETTERS AND SETTERS */
+
     public Long getId() {
         return this.id;
     }

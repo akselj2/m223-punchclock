@@ -26,6 +26,12 @@ public class LoginController {
     @Inject
     UserService userService;
 
+
+    /**
+     * 
+     * @param login parameter of the login entity. makes it more readable and a bit more understandable for me.
+     * @return returns the JWT token that's gotten from the LoginService.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
