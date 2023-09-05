@@ -1,0 +1,240 @@
+commit 30f3b588d6b5d0c8b815fa585ce84a0b4ed36b6f
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Tue Sep 5 13:45:14 2023 +0000
+
+    Finished project.
+    Finished comments.
+    Adjusted README.md
+    Thanks.
+
+commit 382c0c58478ea91945659c52ecb24d0ca673c449
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Tue Sep 5 12:24:29 2023 +0000
+
+    Started writing comments following javadoc standards.
+    also deleted EntryResourceIT.java, redundant file.
+
+commit 468a5daaf99e5d973222edbb22555f9752e6fd97
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Tue Sep 5 11:06:40 2023 +0000
+
+    Started creating and running E2E tests.
+
+commit acf5a0a7ebd10a27148909ca1cbc8c21617134c2
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Tue Sep 5 07:35:01 2023 +0000
+
+    Finished Error handling & Login works-ish
+
+commit d25c764b1ceafd1278368dadabba713d62f6febd
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Mon Sep 4 14:17:56 2023 +0000
+
+    Added more try/catch clauses.
+
+commit d5d1e286413513847e8d644149824d4d0bc37c37
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Mon Sep 4 14:03:46 2023 +0000
+
+    Updated some error handling and finished some functions. JWT isn't functional, but most Anforderungen have been accomplished!
+
+commit aa3811d6a2eefa9269bc65a414013171c1805caa
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Mon Sep 4 13:18:09 2023 +0000
+
+    Started Login system via JWT.
+
+commit 8593747604c7dc0e5448aa0a5599b734ae3de3c4
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Mon Sep 4 11:36:32 2023 +0000
+
+    Fixed a bug.
+
+commit 1573c9f510baf90f083369cc030c0f31318fd611
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Mon Sep 4 11:17:42 2023 +0000
+
+    Added AuthenticationService.java as a stepping stone for authentication methods.
+    Expanded on previously existing BuchungController, BuchungService, etc.
+
+commit 62c46928f40701133e0245519c5ceb02ce7b7eb0
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Mon Sep 4 09:15:07 2023 +0000
+
+    Create User completed, ManyToOne relation between booking and user establisjhed
+
+commit a0da0488b0f5618fe1eb48afdd591f0c1e55c287
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Mon Sep 4 06:23:33 2023 +0000
+
+    Deleted redundant files, created UserController
+
+commit bd716424d84c98da029e96af22644386f4440c98
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Sun Sep 3 22:07:27 2023 +0000
+
+    Made adjustments to prepare for work on 04.09.23
+    Includes: comments, some work already done. many TODOs. delete redundant files for final project.
+
+commit 87d3ff1713db9588c8a9fe0f8eabd3bf4dac06c0
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Sun Sep 3 21:56:32 2023 +0000
+
+    Made adjustments to Buchung files. Added in
+
+commit a101f637650bb0d7372dd3dcf0d7258742c5c995
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Sun Sep 3 21:37:56 2023 +0000
+
+    Updating project to fit LB-B. Updated Entry and made it Buchung.
+
+commit 7e4c5e8c74ba0bbccaadebbef4fe88b1d2474feb
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Tue Aug 29 14:02:32 2023 +0000
+
+    Fourth Commit:
+    Added JWT Token Authentication. (Not as part of the Application)
+
+commit 5df5d5ec6830d5109478fa62c552c7fa4f487627
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Tue Aug 29 12:45:21 2023 +0000
+
+    Third commit: Finished and fully functioning Entities, with joined tables.
+
+commit d1def3130ddeac0b4b45a027bf5d3e1206187bf0
+Author: molotov <63641380+akselj2@users.noreply.github.com>
+Date:   Tue Aug 29 11:36:53 2023 +0000
+
+    Completed Aufgabe 2.1 & began 2.2, relations arent fully finished as of this commit.
+
+commit 2e14cfb11d7469bc6717e954266bd44c04a9f12f
+Author: Robin <1105080+openscript@users.noreply.github.com>
+Date:   Wed Nov 30 14:04:06 2022 +0100
+
+    chore: remove 5050 from vscode port forwarding
+
+commit 6263449689b834e772526e4193dbfc9b47bcdfe4
+Author: Robin Bühler <git+r@obin.ch>
+Date:   Wed Oct 26 16:01:49 2022 +0200
+
+    chore: add editor config
+
+commit 42cef3d3dc3f626084b0e238558c30e5ed0185cc
+Author: Robin Bühler <git+r@obin.ch>
+Date:   Wed Oct 26 15:34:02 2022 +0200
+
+    chore: configure eols to lf
+
+commit 192b2ddd80ef484bd4c75d607d389c9bbfcbddca
+Author: Robin <git+r@obin.ch>
+Date:   Sun Sep 11 08:22:31 2022 +0000
+
+    chore: remove container names to prevent collisions
+
+commit 33e3d455759dbcda9df6456e22efb07c1a15f119
+Author: Robin <git+r@obin.ch>
+Date:   Sun Sep 11 08:09:10 2022 +0000
+
+    chore(api): enhance openapi schema for entry
+
+commit e4123709634fa78042dde54c418c60691c085a28
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 22:05:02 2022 +0000
+
+    docs(readme): mention swagger ui
+
+commit 00558503b2c37afc54928daa28f6a69a9442640c
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 21:57:39 2022 +0000
+
+    chore: clean up constructor
+
+commit dbdb25061cd45e36e636972e4448c8f7c1541eca
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 15:26:13 2022 +0000
+
+    chore: configure test database
+
+commit 884bde14232e6b7489fc9c5430bd4e1a0b07993a
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 15:12:47 2022 +0000
+
+    chore: clean up starter code
+
+commit b8db827c0e916f8002e0f8ffd87d00aac795f94a
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 15:06:03 2022 +0000
+
+    chore: configure pgadmin
+
+commit 2c0a559751738b478ba12b4573c6b58c0a08ff27
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 14:34:33 2022 +0000
+
+    chore: configure cors
+
+commit 3ef8f47155ecef4121dc90a12cf93475d7930585
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 14:34:26 2022 +0000
+
+    chore(deps): add jackson
+
+commit aa2780e9c7c0f7c7949f44a9aaefd848224fb34f
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:52:16 2022 +0000
+
+    feat: add entries user interface
+
+commit 49e894cb16d23be07f967e355e6389f9698405a4
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:52:06 2022 +0000
+
+    feat: manage entries
+
+commit 78f69d99e83b691484a2d0c9e705bba2e3a0ce72
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:51:46 2022 +0000
+
+    chore: configure application
+
+commit 49ac1241e70de2efbb2a976cb5e2b173f534cb54
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:51:29 2022 +0000
+
+    chore: unify project name
+
+commit 471e03722f7d761e916f3b114c23e2522e80c42b
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:29:14 2022 +0000
+
+    chore(deps): add openapi dependency
+
+commit ccf8089fe093e6ec5f6e07bb83110150a7572edc
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:24:01 2022 +0000
+
+    chore(deps): add hibernate and postgres driver
+
+commit e85b9a3069f8c054290db546c5f2d639b767a9d2
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:20:35 2022 +0000
+
+    chore: initialize quarkus project
+
+commit 0af0def7cfbb2a7100a556c0511e9921c56ee06e
+Author: Robin <git+r@obin.ch>
+Date:   Sat Sep 10 10:00:59 2022 +0000
+
+    chore: initialize dev container
+
+commit 25773244e41c50cfee03cce8db7e25422e40f0e5
+Author: Robin <1105080+openscript@users.noreply.github.com>
+Date:   Sat Sep 10 11:46:11 2022 +0200
+
+    docs(readme): add first steps
+
+commit 030b7f897dbc9b54134143531e31856d3badb31d
+Author: Robin <1105080+openscript@users.noreply.github.com>
+Date:   Sat Sep 10 11:17:27 2022 +0200
+
+    Initial commit
