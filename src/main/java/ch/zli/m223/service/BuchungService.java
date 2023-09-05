@@ -22,10 +22,8 @@ public class BuchungService {
     @Inject
     JsonWebToken jwt;
 
-    /**
-     * TODO: Finish adjustments, just like BuchungController.java
-     * TODO: Error catching
-     */
+    
+    
 
     @Transactional
     public Buchung createBuchung(Buchung buchung) throws Exception {

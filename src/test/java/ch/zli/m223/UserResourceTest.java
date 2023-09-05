@@ -15,10 +15,10 @@ public class UserResourceTest {
     @Test
     public void testUserGet() {
         given()
-            .when().get("/User")
+            .when().get("/user")
             .then()
-            .statusCode(401)
-            .body(is(""));
+            .statusCode(200)
+            .body(is("[]"));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class UserResourceTest {
         String token = AuthenticationService.returnkey(user);
         given()
                 .header("Authorization", "Bearer " + token)
-                .when().get("/User")
+                .when().get("/user")
                 .then()
                 .statusCode(200);
     }

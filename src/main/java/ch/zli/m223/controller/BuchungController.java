@@ -28,12 +28,6 @@ import ch.zli.m223.service.BuchungService;
 @Tag(name = "Buchungen", description = "Handling of bookings")
 public class BuchungController {
 
-    /**
-     * TODO: Include JWT in most files, don't forget visitor role.
-     * TODO: AuthService !!!
-     * Note: Shouldn't require too much work, i estimate about 1-2hours. 
-     */
-
     @Inject
     BuchungService buchungService;
 
